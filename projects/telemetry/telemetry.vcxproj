@@ -139,11 +139,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\src\event\event.cpp" />
     <ClCompile Include="..\..\src\main.cpp" />
+    <ClCompile Include="..\..\src\serializer\json_serializer.cpp" />
     <ClCompile Include="..\..\src\telemetry\telemetry.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\src\event\event.h" />
     <ClInclude Include="..\..\src\macros.h" />
+    <ClInclude Include="..\..\src\serializer\json_serializer.h" />
+    <ClInclude Include="..\..\src\serializer\serializer.h" />
     <ClInclude Include="..\..\src\telemetry\telemetry.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

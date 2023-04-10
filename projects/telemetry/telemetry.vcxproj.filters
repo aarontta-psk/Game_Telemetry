@@ -45,6 +45,12 @@
     <ClCompile Include="..\..\src\telemetry\telemetry.cpp">
       <Filter>Source Files\telemetry</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\serializer\json_serializer.cpp">
+      <Filter>Source Files\serializer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\event\event.cpp">
+      <Filter>Source Files\event</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\macros.h">
@@ -52,6 +58,15 @@
     </ClInclude>
     <ClInclude Include="..\..\src\telemetry\telemetry.h">
       <Filter>Header Files\telemetry</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\serializer\serializer.h">
+      <Filter>Header Files\serializer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\serializer\json_serializer.h">
+      <Filter>Header Files\serializer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\event\event.h">
+      <Filter>Header Files\event</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
