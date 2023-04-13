@@ -1,7 +1,4 @@
-﻿
-
-
-namespace game_telemetry
+﻿namespace game_telemetry
 {
     [System.Serializable]
     public class TelemetryEvent
@@ -9,7 +6,6 @@ namespace game_telemetry
         public enum EventType { DEFAULT, NOT_DEFAULT };
 
         public EventType eventType;
-        public string eventID;
         public string sessionID;
         public long timestamp;
 
@@ -19,7 +15,6 @@ namespace game_telemetry
             sessionID = session_id;
 
             timestamp = ((DateTimeOffset)DateTime.UtcNow).ToUnixTimeSeconds();
-            eventID = eventType.ToString() + sessionID + timestamp;
         }
     }
 }

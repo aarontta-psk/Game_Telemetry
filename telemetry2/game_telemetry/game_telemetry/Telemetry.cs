@@ -1,5 +1,7 @@
 ﻿
 
+using System.Collections.Concurrent;
+
 namespace game_telemetry
 {
     public class Telemetry
@@ -7,6 +9,7 @@ namespace game_telemetry
         private static Telemetry instance = null;
 
         private Persistence[] persistences;
+        private ConcurrentQueue<TelemetryEvent> eventQueue;
 
         private Telemetry()
         {
@@ -24,10 +27,21 @@ namespace game_telemetry
             }
         }
 
+        private void Run()
+        {
+            while (true)
+            {
+                // cosas
+
+                Thread.Sleep(5000);
+            }
+        }
+
         public void TrackEvent(TelemetryEvent t_event)
         {
-            foreach(Persistence p in persistences)
-                p.Save(t_event);
+            //foreach(Persistence p in persistences)
+            //    p.Save(t_event);
+
         }
     }
 }
