@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace game_telemetry
 {
-    class LevelResetEvent
+    class LevelResetEvent : TelemetryEvent
     {
         //Posicion ANTES del reinicio
-        int posPlayerX;
-        int posPlayerY;
-        int actualLevel;
+        public int posPlayerX;
+        public int posPlayerY;
+        public int actualLevel;
         protected LevelResetEvent(EventType type, string session_id, int posPlayerXAux, int posPlayerYAux, int actualLevelAux) : base(type, session_id)
         {
             posPlayerX = posPlayerXAux;

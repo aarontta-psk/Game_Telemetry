@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace game_telemetry
 {
-    class ExitLevelEvent
+    class ExitLevelEvent : TelemetryEvent
     {
-        int level;
-        protected ThrowHookEvent(EventType type, string session_id, int levelAux) : base(type, session_id)
+        public int level;
+        protected ExitLevelEvent(EventType type, string session_id, int levelAux) : base(type, session_id)
         {
             level = levelAux;
         }

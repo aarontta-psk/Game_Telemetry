@@ -8,11 +8,11 @@ namespace game_telemetry
 {
     class DeathEvent:TelemetryEvent
     {
-        enum deathType { FELL, DMG};
+        public enum deathType { FELL, DMG};
 
-        int posPlayerX;
-        int posPlayerY;
-        deathType death;
+        public int posPlayerX;
+        public int posPlayerY;
+        public deathType death;
         //ID DE SECCION QUE NO SE COMO HACER ESTO
 
         protected DeathEvent(EventType type, string session_id, int posPlayerXAux, int posPlayerYAux, deathType deathAux) : base(type, session_id)

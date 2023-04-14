@@ -8,11 +8,11 @@ namespace game_telemetry
 {
     class ThrowHookEvent: TelemetryEvent
     {
-        int posPlayerX;
-        int posPlayerY;
-        int posMouseX;
-        int posMouseY;
-        int numHooks;
+        public int posPlayerX;
+        public int posPlayerY;
+        public int posMouseX;
+        public int posMouseY;
+        public int numHooks;
         protected ThrowHookEvent(EventType type, string session_id, int posPlayerXAux,int posPlayerYAux,int posMouseXAux,int posMouseYAux,int numHooksAux) : base(type, session_id)
         {
             posPlayerX = posPlayerXAux;

@@ -8,10 +8,10 @@ namespace game_telemetry
 {
     class HitHookEvent : TelemetryEvent
     {
-        int posHookX;
-        int posHookY;
-        int accelerationX;
-        int accelerationY;
+        public int posHookX;
+        public int posHookY;
+        public int accelerationX;
+        public int accelerationY;
         protected HitHookEvent(EventType type, string session_id, int posHookXAux, int posHookYAux, int accelerationXAux, int accelerationYAux) : base(type, session_id)
         {
             posHookX = posHookXAux;

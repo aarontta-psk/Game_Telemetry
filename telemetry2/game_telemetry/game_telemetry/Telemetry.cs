@@ -10,6 +10,7 @@ namespace game_telemetry
 
         private Persistence[] persistences;
         private ConcurrentQueue<TelemetryEvent> eventQueue;
+        private int sessionId;
 
         private Telemetry()
         {
@@ -25,6 +26,11 @@ namespace game_telemetry
 
                 return instance;
             }
+        }
+
+        public int TelemetrySession()
+        {
+            return sessionId;
         }
 
         private void Run()

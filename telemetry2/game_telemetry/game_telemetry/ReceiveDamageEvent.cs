@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace game_telemetry
 {
-    class LandingEvent : TelemetryEvent
+    class ReceiveDamageEvent : TelemetryEvent
     {
         public int posPlayerX;
         public int posPlayerY;
 
-        protected LandingEvent(EventType type, string session_id, int posPlayerXAux, int posPlayerYAux) : base(type, session_id)
+        protected ReceiveDamageEvent(EventType type, string session_id, int posPlayerXAux, int posPlayerYAux, int posMouseXAux, int posMouseYAux, int numHooksAux) : base(type, session_id)
         {
             posPlayerX = posPlayerXAux;
             posPlayerY = posPlayerYAux;

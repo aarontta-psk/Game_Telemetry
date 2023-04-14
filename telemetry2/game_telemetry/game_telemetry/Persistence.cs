@@ -6,11 +6,13 @@ namespace game_telemetry
 {
     public abstract class Persistence
     {
-        public Persistence()
-        {
+        protected ISerializer serializer;
 
+        public Persistence(ISerializer serializer_)
+        {
+            serializer = serializer_;
         }
 
-        public abstract void Save(TelemetryEvent ev);
+        public abstract void Save(TelemetryEvent telemetryEvent);
     }
 }
