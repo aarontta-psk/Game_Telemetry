@@ -1,4 +1,6 @@
-﻿namespace game_telemetry
+﻿using System.IO;
+
+namespace game_telemetry
 {
     class FilePersistence : Persistence
     {

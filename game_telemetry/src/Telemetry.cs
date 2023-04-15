@@ -1,4 +1,5 @@
 ﻿using System.Collections.Concurrent;
+using System.Threading;
 
 namespace game_telemetry
 {
@@ -58,8 +59,9 @@ namespace game_telemetry
             
             eventQueue = new ConcurrentQueue<TelemetryEvent>();
 
-            persistences = new Persistence[1];
+            persistences = new Persistence[2];
             persistences[0] = new FilePersistence(new JsonSerializer());
+            persistences[1] = new FilePersistence(new CsvSerializer());
 
             telemetryThread = new Thread(Run);
             telemetryThread.Start();

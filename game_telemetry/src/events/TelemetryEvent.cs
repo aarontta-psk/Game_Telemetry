@@ -14,7 +14,7 @@
             Type = type.ToString();
             SessionID = Telemetry.Instance.SessionID;
 
-            TimeStamp = ((DateTimeOffset)DateTime.UtcNow).ToUnixTimeSeconds();
+            TimeStamp = ((System.DateTimeOffset)System.DateTime.UtcNow).ToUnixTimeSeconds();
         }
     }
 }
