@@ -2,22 +2,23 @@
 {
     class FilePersistence : Persistence
     {
-
-        const string Directory = "./temp/Folder/";
-        FileStream fileStream;
+        const string TelemetryDirectory = "./telemetry_data/";
+        string fileName;
 
         public FilePersistence(ISerializer serializer_) : base(serializer_)
         {
-            string file = Directory + Telemetry.Instance.SessionID.ToString();
-
-            fileStream = File.Open(file, FileMode.Create);
+            if (!Directory.Exists(TelemetryDirectory))
+                Directory.CreateDirectory(TelemetryDirectory);
+            fileName = TelemetryDirectory + Telemetry.Instance.SessionID.ToString() + serializer.Extension();
         }
 
         public override void Save(TelemetryEvent t_event)
         {
-            StreamWriter streamWriter = new StreamWriter(fileStream);
-            streamWriter.WriteLine("aqui va lo que tiene que guardar");
-            streamWriter.Close();
+            using (StreamWriter streamWriter = new StreamWriter(fileName, true))
+            {
+                string serialisedEvent = serializer.Serialize(t_event);
+                streamWriter.WriteLine(serialisedEvent);
+            }
         }
     }
 }

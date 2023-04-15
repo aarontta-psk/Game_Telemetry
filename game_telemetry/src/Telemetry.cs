@@ -12,38 +12,37 @@ namespace game_telemetry
         private Persistence[] persistences;
         private ConcurrentQueue<TelemetryEvent> eventQueue;
 
-        private int sessionID;
-        public int SessionID { get { return sessionID; } set { sessionID = value; } }
+        private long sessionID;
+        public long SessionID { get { return sessionID; } set { sessionID = value; } }
 
-        private Telemetry()
-        {
-            eventQueue = new ConcurrentQueue<TelemetryEvent>();
+        private string gameName;
+        public string GameName { get { return gameName; } set { gameName = value; } }
 
-            persistences = new Persistence[1];
-            persistences[0] = new FilePersistence(new JsonSerializer());
-
-            telemetryThread = new Thread(Run);
-            telemetryThread.Start();
-        }
+        private Telemetry() { }
 
         public static Telemetry Instance
         {
             get
             {
-                if (instance == null)
+                if (instance == null) {
                     instance = new Telemetry();
+                    instance.TelemetrySetup();
+                }
 
                 return instance;
             }
         }
 
-
         private void Run()
         {
             while (true)
             {
-                // cosas
-                Console.WriteLine("bobo");
+                TelemetryEvent? t_event;
+                while (eventQueue.TryDequeue(out t_event)) {
+                    foreach (Persistence persistence in persistences)
+                        persistence.Save(t_event);
+                }
+
                 Thread.Sleep(ThreadDelay);
             }
         }
@@ -53,11 +52,17 @@ namespace game_telemetry
             eventQueue.Enqueue(t_event);
         }
 
-        static void Main(string[] args)
+        private void TelemetrySetup()
         {
-            Telemetry.Instance.TrackEvent(new ExitLevelEvent(TelemetryEvent.EventType.DEFAULT, "9", 2));
+            Telemetry.Instance.SessionID = 1232341231234;
+            
+            eventQueue = new ConcurrentQueue<TelemetryEvent>();
 
-            Thread.Sleep(10000);
+            persistences = new Persistence[1];
+            persistences[0] = new FilePersistence(new JsonSerializer());
+
+            telemetryThread = new Thread(Run);
+            telemetryThread.Start();
         }
     }
 }

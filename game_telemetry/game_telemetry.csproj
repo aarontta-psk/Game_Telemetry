@@ -5,6 +5,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <PackageOutputPath />
+    <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
 
 </Project>

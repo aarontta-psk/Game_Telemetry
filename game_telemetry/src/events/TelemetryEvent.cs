@@ -5,16 +5,16 @@
     {
         public enum EventType { DEFAULT, NOT_DEFAULT };
 
-        public EventType eventType;
-        public string sessionID;
-        public long timestamp;
+        public string Type { get; set; }
+        public long SessionID { get; set; }
+        public long TimeStamp { get; set; }
 
-        protected TelemetryEvent(EventType type, string session_id)
+        protected TelemetryEvent(EventType type)
         {
-            eventType = type;
-            sessionID = Telemetry.Instance.SessionID.ToString();
+            Type = type.ToString();
+            SessionID = Telemetry.Instance.SessionID;
 
-            timestamp = ((DateTimeOffset)DateTime.UtcNow).ToUnixTimeSeconds();
+            TimeStamp = ((DateTimeOffset)DateTime.UtcNow).ToUnixTimeSeconds();
         }
     }
 }

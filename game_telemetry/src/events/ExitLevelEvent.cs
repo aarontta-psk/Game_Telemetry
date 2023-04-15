@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace game_telemetry
+﻿namespace game_telemetry
 {
-    class ExitLevelEvent : TelemetryEvent
+    public class ExitLevelEvent : TelemetryEvent
     {
-        public int level;
-        public ExitLevelEvent(EventType type, string session_id, int levelAux) : base(type, session_id)
+        public int Level { get; set; }
+
+        public ExitLevelEvent(EventType type, int lvl) : base(type)
         {
-            level = levelAux;
+            Level = lvl;
         }
     }
 }

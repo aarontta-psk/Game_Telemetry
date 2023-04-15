@@ -4,7 +4,7 @@
     {
         protected ISerializer serializer;
 
-        public Persistence(ISerializer serializer_)
+        protected Persistence(ISerializer serializer_)
         {
             serializer = serializer_;
         }
