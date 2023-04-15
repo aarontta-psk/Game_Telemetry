@@ -9,7 +9,7 @@ namespace game_telemetry
     class ExitLevelEvent : TelemetryEvent
     {
         public int level;
-        protected ExitLevelEvent(EventType type, string session_id, int levelAux) : base(type, session_id)
+        public ExitLevelEvent(EventType type, string session_id, int levelAux) : base(type, session_id)
         {
             level = levelAux;
         }

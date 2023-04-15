@@ -1,8 +1,4 @@
-﻿
-
-using System.Collections.Concurrent;
-
-namespace game_telemetry
+﻿namespace game_telemetry
 {
     public abstract class Persistence
     {
@@ -13,6 +9,6 @@ namespace game_telemetry
             serializer = serializer_;
         }
 
-        public abstract void Save(TelemetryEvent telemetryEvent);
+        public abstract void Save(TelemetryEvent t_event);
     }
 }

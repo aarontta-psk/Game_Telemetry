@@ -2,6 +2,6 @@
 {
     public interface ISerializer
     {
-        public string Serialize(TelemetryEvent e);
+        public string Serialize(TelemetryEvent t_event);
     }
 }

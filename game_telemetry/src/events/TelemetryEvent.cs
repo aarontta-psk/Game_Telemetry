@@ -12,7 +12,7 @@
         protected TelemetryEvent(EventType type, string session_id)
         {
             eventType = type;
-            sessionID = session_id;
+            sessionID = Telemetry.Instance.SessionID.ToString();
 
             timestamp = ((DateTimeOffset)DateTime.UtcNow).ToUnixTimeSeconds();
         }

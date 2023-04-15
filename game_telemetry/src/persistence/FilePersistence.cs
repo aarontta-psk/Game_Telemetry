@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace game_telemetry
+﻿namespace game_telemetry
 {
     class FilePersistence : Persistence
     {
@@ -14,12 +8,12 @@ namespace game_telemetry
 
         public FilePersistence(ISerializer serializer_) : base(serializer_)
         {
-            string file = Directory + Telemetry.Instance.TelemetrySession().ToString();
+            string file = Directory + Telemetry.Instance.SessionID.ToString();
 
             fileStream = File.Open(file, FileMode.Create);
         }
 
-        public override void Save(TelemetryEvent telemetryEvent)
+        public override void Save(TelemetryEvent t_event)
         {
             StreamWriter streamWriter = new StreamWriter(fileStream);
             streamWriter.WriteLine("aqui va lo que tiene que guardar");
