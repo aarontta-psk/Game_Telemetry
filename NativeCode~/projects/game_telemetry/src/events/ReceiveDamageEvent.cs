@@ -4,11 +4,14 @@
     {
         public int posPlayerX;
         public int posPlayerY;
+        public enum DamageType { ENEMY, OBSTACLE }
+        public DamageType dmgType;
 
-        public ReceiveDamageEvent(EventType type, int posPlayerXAux, int posPlayerYAux, int posMouseXAux, int posMouseYAux, int numHooksAux) : base(type)
+        public ReceiveDamageEvent(EventType type, int posPlayerXAux, int posPlayerYAux,DamageType dmgTypeAux) : base(type)
         {
             posPlayerX = posPlayerXAux;
             posPlayerY = posPlayerYAux;
+            dmgType = dmgTypeAux;
         }
     }
 }

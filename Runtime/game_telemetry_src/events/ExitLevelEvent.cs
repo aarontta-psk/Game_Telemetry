@@ -2,11 +2,11 @@
 {
     public class ExitLevelEvent : TelemetryEvent
     {
-        public int Level { get; set; }
+        public int level;
 
         public ExitLevelEvent(EventType type, int lvl) : base(type)
         {
-            Level = lvl;
+            level = lvl;
         }
     }
 }
