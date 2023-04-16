@@ -11,7 +11,7 @@ namespace game_telemetry
         {
             if (!Directory.Exists(TelemetryDirectory))
                 Directory.CreateDirectory(TelemetryDirectory);
-            fileName = TelemetryDirectory + Telemetry.Instance.SessionID.ToString() + serializer.Extension();
+            fileName = Telemetry.Instance.SessionID.ToString() + serializer.Extension();
         }
 
         public override void Save(TelemetryEvent t_event)
