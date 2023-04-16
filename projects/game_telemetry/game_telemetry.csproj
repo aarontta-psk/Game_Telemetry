@@ -6,6 +6,9 @@
     <Nullable>enable</Nullable>
     <PackageOutputPath />
     <OutputType>Library</OutputType>
+    <PlatformTarget>x64</PlatformTarget>
+    <BaseOutputPath>$(SolutionDir)bin\$(Configuration)\</BaseOutputPath>
+    <BaseIntermediateOutputPath>obj\</BaseIntermediateOutputPath>
   </PropertyGroup>
 
   <ItemGroup>

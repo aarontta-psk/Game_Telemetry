@@ -17,8 +17,10 @@ namespace game_telemetry
             //return System.Text.Json.JsonSerializer.Serialize(t_event);
 
             JsonSerializerSettings jsonSerializerSettings = new JsonSerializerSettings();
-            jsonSerializerSettings.Formatting = Formatting.Indented;   
+            jsonSerializerSettings.Formatting = Formatting.Indented;
             return JsonConvert.SerializeObject(t_event, jsonSerializerSettings);
+
+            //return "sike";
         }
 
         public string Extension()

@@ -5,7 +5,17 @@ namespace game_telemetry
 {
     public class Telemetry
     {
-        private static Telemetry instance = null;
+        static void Main(string[] args)
+        {
+            Telemetry.Instance.TrackEvent(new ExitLevelEvent(TelemetryEvent.EventType.DEFAULT, 76));
+            Telemetry.Instance.TrackEvent(new ExitLevelEvent(TelemetryEvent.EventType.NOT_DEFAULT, 123));
+            //Telemetry.Instance.TrackEvent(new LandingEvent(TelemetryEvent.EventType.DEFAULT, 2, 3));
+
+            Thread.Sleep(ThreadDelay*2);
+            Telemetry.Instance.TrackEvent(new ExitLevelEvent(TelemetryEvent.EventType.DEFAULT, 76));
+        }
+
+        private static Telemetry? instance;
 
         private const int ThreadDelay = 5000; // in ms
         Thread telemetryThread;

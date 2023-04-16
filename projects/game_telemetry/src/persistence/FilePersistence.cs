@@ -9,9 +9,9 @@ namespace game_telemetry
 
         public FilePersistence(ISerializer serializer_) : base(serializer_)
         {
-            if (!Directory.Exists(TelemetryDirectory))
-                Directory.CreateDirectory(TelemetryDirectory);
-            fileName = TelemetryDirectory + Telemetry.Instance.SessionID.ToString() + serializer.Extension();
+            //if (!Directory.Exists(TelemetryDirectory))
+            //    Directory.CreateDirectory(TelemetryDirectory);
+            //fileName = TelemetryDirectory + Telemetry.Instance.SessionID.ToString() + serializer.Extension();
         }
 
         public override void Save(TelemetryEvent t_event)
