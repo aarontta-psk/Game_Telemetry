@@ -4,16 +4,11 @@
   "displayName": "Game Telemetry for Unity",
   "description": "This package servers the purpose of letting programmers use a simple tracking tool for their telemetry tests.",
   "unity": "2019.1",
-  "repository": {
+  "repository": { 
     "type": "git",
-    "url": "https://github.com/jilleJr/Newtonsoft.Json-for-Unity.git",
+    "url": "https://github.com/aarontta-psk/Game_Telemetry.git",
     "directory": "src/game_telemetry"
-  },
-  "keywords": [
-    "game_telemetry",
-    "telemetry",
-    "unity",
-  ],
+	},
   "author": "G02",
   "category": "Utility",
   "dependencies": {},
