@@ -7,7 +7,7 @@
     <PackageOutputPath />
     <OutputType>Library</OutputType>
     <PlatformTarget>x64</PlatformTarget>
-    <BaseOutputPath>$(SolutionDir)bin\$(Configuration)\</BaseOutputPath>
+    <BaseOutputPath>$(SolutionDir)bin\</BaseOutputPath>
     <BaseIntermediateOutputPath>obj\</BaseIntermediateOutputPath>
   </PropertyGroup>
 

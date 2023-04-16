@@ -1,11 +1,7 @@
 {
   "name": "com.g02.game_telemetry_package",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "displayName": "Game Telemetry G02",
   "description": "This package servers the purpose of letting programmers use a simple tracking tool for their telemetry tests.",
   "unity": "2020.3",
-  "dependencies": {
-    "com.unity.package-manager-ui": "2.0.8",
-    "com.unity.modules.xr": "4.0.0-preview.11"
-  }
 }
