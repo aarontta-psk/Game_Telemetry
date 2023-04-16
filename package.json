@@ -1,8 +1,8 @@
 {
   "name": "com.g02.game_telemetry_package",
-  "version": "0.1.0",
-  "displayName": "Game Telemetry for Unity",
-  "description": "This package servers the purpose of letting programmers use a simple tracking tool for their telemetry tests.",
+  "version": "0.2.0",
+  "displayName": "Game Telemetry",
+  "description": "This package serves the purpose of letting programmers use a simple tracking tool for their telemetry tests in Unity.",
   "unity": "2020.3",
   "repository": { 
     "type": "git",
@@ -12,5 +12,5 @@
   "author": "G02",
   "category": "Utility",
   "dependencies": {},
-  "type": "library"
+  "type": "tool"
 }
