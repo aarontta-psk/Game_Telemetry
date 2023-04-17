@@ -9,11 +9,11 @@ namespace game_telemetry
         [JsonProperty(Order = 4)]
         public DamageType DmgType { get; private set; }
         [JsonProperty(Order = 5)]
-        public int PosPlayerX { get; private set; }
+        public float PosPlayerX { get; private set; }
         [JsonProperty(Order = 6)]
-        public int PosPlayerY { get; private set; }
+        public float PosPlayerY { get; private set; }
 
-        public ReceiveDamageEvent(EventType type, int posPlayerX, int posPlayerY, DamageType dmgType) : base(type)
+        public ReceiveDamageEvent(EventType type, float posPlayerX, float posPlayerY, DamageType dmgType) : base(type)
         {
             PosPlayerX = posPlayerX;
             PosPlayerY = posPlayerY;

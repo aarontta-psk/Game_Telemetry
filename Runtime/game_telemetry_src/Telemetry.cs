@@ -8,7 +8,7 @@ namespace game_telemetry
     {
         private static Telemetry? instance;
 
-        private const int ThreadDelay = 5000; // in ms
+        private const int ThreadDelay = 1500; // in ms
         private Thread telemetryThread;
         private bool runningThread;
 
@@ -32,7 +32,7 @@ namespace game_telemetry
                 System.Console.WriteLine("Ya has inicializado la instancia.");
                 return false;
             }
-            
+
             instance = new Telemetry();
             instance.TelemetrySetup(gameName_, sessionId_);
             return true;
@@ -53,14 +53,19 @@ namespace game_telemetry
         {
             while (runningThread)
             {
-                TelemetryEvent? t_event;
-                while (eventQueue.TryDequeue(out t_event))
-                {
-                    foreach (Persistence persistence in persistences)
-                        persistence.Save(t_event);
-                }
-
+                Persist();
                 Thread.Sleep(ThreadDelay);
+            }
+            Persist();
+        }
+
+        private void Persist()
+        {
+            TelemetryEvent? t_event;
+            while (eventQueue.TryDequeue(out t_event))
+            {
+                foreach (Persistence persistence in persistences)
+                    persistence.Save(t_event);
             }
         }
 
@@ -70,6 +75,7 @@ namespace game_telemetry
             SessionID = sessionId_;
 
             eventQueue = new ConcurrentQueue<TelemetryEvent>();
+            eventQueue.Enqueue(new SessionStartEvent(TelemetryEvent.EventType.SESSION_START));
 
             persistences = new List<Persistence>();
             persistences.Add(new FilePersistence(new JsonSerializer()));
