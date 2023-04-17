@@ -1,6 +1,6 @@
-﻿using System;
+﻿using System.Threading;
+using System.Collections.Generic;
 using System.Collections.Concurrent;
-using System.Threading;
 
 namespace game_telemetry
 {
@@ -12,7 +12,7 @@ namespace game_telemetry
         private Thread telemetryThread;
         private bool runningThread;
 
-        private Persistence[] persistences;
+        private List<Persistence> persistences;
         private ConcurrentQueue<TelemetryEvent> eventQueue;
 
         private long sessionID;
@@ -27,14 +27,15 @@ namespace game_telemetry
 
         public static bool Init(string gameName_, long sessionId_)
         {
-            if (instance == null)
+            if (instance != null)
             {
-                instance = new Telemetry();
-                instance.TelemetrySetup(gameName_, sessionId_);
-                return true;
+                System.Console.WriteLine("Ya has inicializado la instancia.");
+                return false;
             }
-            Console.WriteLine("Ya has inicializado la instancia.");
-            return false;
+            
+            instance = new Telemetry();
+            instance.TelemetrySetup(gameName_, sessionId_);
+            return true;
         }
 
         public static void Release()
@@ -50,10 +51,11 @@ namespace game_telemetry
 
         private void Run()
         {
-            while (true)
+            while (runningThread)
             {
                 TelemetryEvent? t_event;
-                while (eventQueue.TryDequeue(out t_event)) {
+                while (eventQueue.TryDequeue(out t_event))
+                {
                     foreach (Persistence persistence in persistences)
                         persistence.Save(t_event);
                 }
@@ -66,13 +68,13 @@ namespace game_telemetry
         {
             GameName = gameName_;
             SessionID = sessionId_;
-            
+
             eventQueue = new ConcurrentQueue<TelemetryEvent>();
 
-            persistences = new Persistence[3];
-            persistences[0] = new FilePersistence(new JsonSerializer());
-            persistences[1] = new FilePersistence(new CsvSerializer());
-            persistences[2] = new FilePersistence(new BinarySerializer());
+            persistences = new List<Persistence>();
+            persistences.Add(new FilePersistence(new JsonSerializer()));
+            persistences.Add(new FilePersistence(new CsvSerializer()));
+            persistences.Add(new FilePersistence(new BinarySerializer()));
 
             runningThread = true;
             telemetryThread = new Thread(Run);
