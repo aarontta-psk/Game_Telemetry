@@ -13,7 +13,7 @@ namespace game_telemetry
         [JsonProperty(Order = 6)]
         public int PosPlayerY { get; private set; }
 
-        public ReceiveDamageEvent(EventType type, int posPlayerX, int posPlayerY,DamageType dmgType) : base(type)
+        public ReceiveDamageEvent(EventType type, int posPlayerX, int posPlayerY, DamageType dmgType) : base(type)
         {
             PosPlayerX = posPlayerX;
             PosPlayerY = posPlayerY;

@@ -5,8 +5,8 @@ namespace game_telemetry
     [System.Serializable]
     public class TelemetryEvent
     {
-        public enum EventType { DEFAULT, ARRIVE_NEW_ZONE, DEATH, END_LEVEL, EXIT_LEVEL, HIT_HOOK, LANDING_EVENT, 
-                                LEVEL_RESET, RECEIVE_DMG, SESSION_END, SESSION_START, START_LEVEL, THROW_HOOK};
+        public enum EventType { DEFAULT, ARRIVE_NEW_ZONE, DEATH, END_LEVEL, EXIT_LEVEL, HIT_HOOK, LANDING_EVENT,
+            LEVEL_RESET, RECEIVE_DMG, SESSION_END, SESSION_START, START_LEVEL, THROW_HOOK };
 
         [JsonProperty(Order = 1)]
         public string Type { get; private set; }

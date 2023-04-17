@@ -16,7 +16,7 @@ namespace game_telemetry
         [JsonProperty(Order = 8)]
         public int NumHooks { get; private set; }
 
-        protected ThrowHookEvent(EventType type, int posPlayerX,int posPlayerY,int posMouseX,int posMouseY,int numHooks) : base(type)
+        protected ThrowHookEvent(EventType type, int posPlayerX, int posPlayerY, int posMouseX, int posMouseY, int numHooks) : base(type)
         {
             PosPlayerX = posPlayerX;
             PosPlayerY = posPlayerY;
