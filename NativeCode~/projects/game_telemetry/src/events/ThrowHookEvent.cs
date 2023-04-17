@@ -1,5 +1,6 @@
 ﻿namespace game_telemetry
 {
+    [System.Serializable]
     public class ThrowHookEvent : TelemetryEvent
     {
         public int PosPlayerX { get; private set; }

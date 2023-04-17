@@ -1,6 +1,7 @@
 ﻿
 namespace game_telemetry
 {
+    [System.Serializable]
     public class ArriveNewZoneEvent: TelemetryEvent
     {
         //ID DE SECCION

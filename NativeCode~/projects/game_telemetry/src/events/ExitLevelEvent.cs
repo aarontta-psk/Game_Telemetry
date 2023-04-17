@@ -1,5 +1,6 @@
 ﻿namespace game_telemetry
 {
+    [System.Serializable]
     public class ExitLevelEvent : TelemetryEvent
     {
         public int Level { get; private set; }

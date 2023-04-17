@@ -1,5 +1,6 @@
 ﻿namespace game_telemetry
 {
+    [System.Serializable]
     public class ReceiveDamageEvent : TelemetryEvent
     {
         public enum DamageType { ENEMY, OBSTACLE }

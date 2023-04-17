@@ -69,9 +69,10 @@ namespace game_telemetry
             
             eventQueue = new ConcurrentQueue<TelemetryEvent>();
 
-            persistences = new Persistence[2];
+            persistences = new Persistence[3];
             persistences[0] = new FilePersistence(new JsonSerializer());
             persistences[1] = new FilePersistence(new CsvSerializer());
+            persistences[2] = new FilePersistence(new BinarySerializer());
 
             runningThread = true;
             telemetryThread = new Thread(Run);

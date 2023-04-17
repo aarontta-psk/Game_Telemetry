@@ -1,5 +1,6 @@
 ﻿namespace game_telemetry
 {
+    [System.Serializable]
     public class DeathEvent :TelemetryEvent
     {
         public enum DeathType { FELL, DAMAGE};

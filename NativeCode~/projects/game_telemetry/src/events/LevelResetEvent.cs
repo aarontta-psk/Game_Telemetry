@@ -1,5 +1,6 @@
 ﻿namespace game_telemetry
 {
+    [System.Serializable]
     public class LevelResetEvent : TelemetryEvent
     {
         //Posicion ANTES del reinicio

@@ -1,5 +1,6 @@
 ﻿namespace game_telemetry
 {
+    [System.Serializable]
     public class HitHookEvent : TelemetryEvent
     {
         public int PosHookX { get; private set; }
