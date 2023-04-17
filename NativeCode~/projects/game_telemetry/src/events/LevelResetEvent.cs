@@ -7,13 +7,13 @@ namespace game_telemetry
     {
         //Posicion ANTES del reinicio
         [JsonProperty(Order = 4)]
-        public int PosPlayerX { get; private set; }
+        public float PosPlayerX { get; private set; }
         [JsonProperty(Order = 5)]
-        public int PosPlayerY { get; private set; }
+        public float PosPlayerY { get; private set; }
         [JsonProperty(Order = 6)]
         public int CurrentLevel { get; private set; }
 
-        public LevelResetEvent(EventType type, int posPlayerX, int posPlayerY, int currentLevel) : base(type)
+        public LevelResetEvent(EventType type, float posPlayerX, float posPlayerY, int currentLevel) : base(type)
         {
             PosPlayerX = posPlayerX;
             PosPlayerY = posPlayerY;

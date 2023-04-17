@@ -6,11 +6,11 @@ namespace game_telemetry
     public class LandingEvent : TelemetryEvent
     {
         [JsonProperty(Order = 4)]
-        public int PosPlayerX { get; private set; }
+        public float PosPlayerX { get; private set; }
         [JsonProperty(Order = 5)]
-        public int PosPlayerY { get; private set; }
+        public float PosPlayerY { get; private set; }
 
-        public LandingEvent(EventType type, int posPlayerX, int posPlayerY) : base(type)
+        public LandingEvent(EventType type, float posPlayerX, float posPlayerY) : base(type)
         {
             PosPlayerX = posPlayerX;
             PosPlayerY = posPlayerY;

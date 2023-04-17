@@ -6,7 +6,7 @@ namespace game_telemetry
     {
         static void Main(string[] args)
         {
-            Telemetry.Init("aaronGay", 69);
+            Telemetry.Init("TelemetrySystem", 69);
 
             Telemetry.Instance.TrackEvent(new ExitLevelEvent(TelemetryEvent.EventType.DEFAULT, 76));
             Telemetry.Instance.TrackEvent(new ExitLevelEvent(TelemetryEvent.EventType.EXIT_LEVEL, 123));

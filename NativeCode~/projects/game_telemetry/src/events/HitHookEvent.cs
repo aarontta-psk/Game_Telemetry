@@ -6,15 +6,15 @@ namespace game_telemetry
     public class HitHookEvent : TelemetryEvent
     {
         [JsonProperty(Order = 4)]
-        public int PosHookX { get; private set; }
+        public float PosHookX { get; private set; }
         [JsonProperty(Order = 5)]
-        public int PosHookY { get; private set; }
+        public float PosHookY { get; private set; }
         [JsonProperty(Order = 6)]
-        public int AccelerationX { get; private set; }
+        public float AccelerationX { get; private set; }
         [JsonProperty(Order = 7)]
-        public int AccelerationY { get; private set; }
+        public float AccelerationY { get; private set; }
 
-        public HitHookEvent(EventType type, int posHookX, int posHookY, int accelerationX, int accelerationY) : base(type)
+        public HitHookEvent(EventType type, float posHookX, float posHookY, float accelerationX, float accelerationY) : base(type)
         {
             PosHookX = posHookX;
             PosHookY = posHookY;

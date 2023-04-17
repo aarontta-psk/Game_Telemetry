@@ -70,6 +70,7 @@ namespace game_telemetry
             SessionID = sessionId_;
 
             eventQueue = new ConcurrentQueue<TelemetryEvent>();
+            eventQueue.Enqueue(new SessionStartEvent(TelemetryEvent.EventType.SESSION_START));
 
             persistences = new List<Persistence>();
             persistences.Add(new FilePersistence(new JsonSerializer()));
