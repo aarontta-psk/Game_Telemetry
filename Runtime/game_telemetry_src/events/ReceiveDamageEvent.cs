@@ -1,17 +1,18 @@
 ﻿namespace game_telemetry
 {
+    [System.Serializable]
     public class ReceiveDamageEvent : TelemetryEvent
     {
-        public int posPlayerX;
-        public int posPlayerY;
         public enum DamageType { ENEMY, OBSTACLE }
-        public DamageType dmgType;
+        public DamageType DmgType { get; private set; }
+        public int PosPlayerX { get; private set; }
+        public int PosPlayerY { get; private set; }
 
-        public ReceiveDamageEvent(EventType type, int posPlayerXAux, int posPlayerYAux,DamageType dmgTypeAux) : base(type)
+        public ReceiveDamageEvent(EventType type, int posPlayerX, int posPlayerY,DamageType dmgType) : base(type)
         {
-            posPlayerX = posPlayerXAux;
-            posPlayerY = posPlayerYAux;
-            dmgType = dmgTypeAux;
+            PosPlayerX = posPlayerX;
+            PosPlayerY = posPlayerY;
+            DmgType = dmgType;
         }
     }
 }

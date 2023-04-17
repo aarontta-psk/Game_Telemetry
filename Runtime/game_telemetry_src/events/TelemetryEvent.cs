@@ -3,18 +3,19 @@
     [System.Serializable]
     public class TelemetryEvent
     {
-        public enum EventType { DEFAULT, NOT_DEFAULT };
+        public enum EventType { DEFAULT, ARRIVE_NEW_ZONE, DEATH, END_LEVEL, EXIT_LEVEL, HIT_HOOK, LANDING_EVENT, 
+                                LEVEL_RESET, RECEIVE_DMG, SESSION_END, SESSION_START, START_LEVEL, THROW_HOOK};
 
-        public string type;
-        public long sessionID;
-        public long timeStamp;
+        public string Type { get; private set; }
+        public long SessionID { get; private set; }
+        public long TimeStamp { get; private set; }
 
         protected TelemetryEvent(EventType type)
         {
-            this.type = type.ToString();
-            sessionID = Telemetry.Instance.SessionID;
+            Type = type.ToString();
+            SessionID = Telemetry.Instance.SessionID;
 
-            timeStamp = ((System.DateTimeOffset)System.DateTime.UtcNow).ToUnixTimeSeconds();
+            TimeStamp = ((System.DateTimeOffset)System.DateTime.UtcNow).ToUnixTimeSeconds();
         }
     }
 }

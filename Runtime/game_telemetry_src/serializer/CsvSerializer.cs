@@ -1,6 +1,5 @@
-﻿using System.Runtime.Serialization.Json;
+﻿using System.Text;
 using System.Reflection;
-using System.Text;
 
 namespace game_telemetry
 {

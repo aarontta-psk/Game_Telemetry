@@ -1,5 +1,6 @@
-﻿using System.Collections.Concurrent;
-using System.Threading;
+﻿using System.Threading;
+using System.Collections.Generic;
+using System.Collections.Concurrent;
 
 namespace game_telemetry
 {
@@ -8,38 +9,53 @@ namespace game_telemetry
         private static Telemetry? instance;
 
         private const int ThreadDelay = 5000; // in ms
-        Thread telemetryThread;
+        private Thread telemetryThread;
+        private bool runningThread;
 
-        private Persistence[] persistences;
+        private List<Persistence> persistences;
         private ConcurrentQueue<TelemetryEvent> eventQueue;
 
         private long sessionID;
-        public long SessionID { get { return sessionID; } set { sessionID = value; } }
+        public long SessionID { get => sessionID; private set { sessionID = value; } }
 
         private string gameName;
-        public string GameName { get { return gameName; } set { gameName = value; } }
+        public string GameName { get => gameName; private set { gameName = value; } }
 
         private Telemetry() { }
 
-        public static Telemetry Instance
-        {
-            get
-            {
-                if (instance == null) {
-                    instance = new Telemetry();
-                    instance.TelemetrySetup();
-                }
+        public static Telemetry Instance => instance;
 
-                return instance;
+        public static bool Init(string gameName_, long sessionId_)
+        {
+            if (instance != null)
+            {
+                System.Console.WriteLine("Ya has inicializado la instancia.");
+                return false;
             }
+            
+            instance = new Telemetry();
+            instance.TelemetrySetup(gameName_, sessionId_);
+            return true;
+        }
+
+        public static void Release()
+        {
+            instance.TelemetryStop();
+            instance = null;
+        }
+
+        public void TrackEvent(TelemetryEvent t_event)
+        {
+            eventQueue.Enqueue(t_event);
         }
 
         private void Run()
         {
-            while (true)
+            while (runningThread)
             {
                 TelemetryEvent? t_event;
-                while (eventQueue.TryDequeue(out t_event)) {
+                while (eventQueue.TryDequeue(out t_event))
+                {
                     foreach (Persistence persistence in persistences)
                         persistence.Save(t_event);
                 }
@@ -48,23 +64,28 @@ namespace game_telemetry
             }
         }
 
-        public void TrackEvent(TelemetryEvent t_event)
+        private void TelemetrySetup(string gameName_, long sessionId_)
         {
-            eventQueue.Enqueue(t_event);
-        }
+            GameName = gameName_;
+            SessionID = sessionId_;
 
-        private void TelemetrySetup()
-        {
-            Telemetry.Instance.SessionID = 1232341231234;
-            
             eventQueue = new ConcurrentQueue<TelemetryEvent>();
 
-            persistences = new Persistence[2];
-            persistences[0] = new FilePersistence(new JsonSerializer());
-            persistences[1] = new FilePersistence(new CsvSerializer());
+            persistences = new List<Persistence>();
+            persistences.Add(new FilePersistence(new JsonSerializer()));
+            persistences.Add(new FilePersistence(new CsvSerializer()));
+            persistences.Add(new FilePersistence(new BinarySerializer()));
 
+            runningThread = true;
             telemetryThread = new Thread(Run);
             telemetryThread.Start();
+        }
+
+        private void TelemetryStop()
+        {
+            runningThread = false;
+            eventQueue.Enqueue(new SessionEndEvent(TelemetryEvent.EventType.SESSION_END));
+            telemetryThread.Join();
         }
     }
 }
