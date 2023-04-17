@@ -9,7 +9,7 @@ namespace game_telemetry
             Telemetry.Init("aaronGay", 69);
 
             Telemetry.Instance.TrackEvent(new ExitLevelEvent(TelemetryEvent.EventType.DEFAULT, 76));
-            Telemetry.Instance.TrackEvent(new ExitLevelEvent(TelemetryEvent.EventType.NOT_DEFAULT, 123));
+            Telemetry.Instance.TrackEvent(new ExitLevelEvent(TelemetryEvent.EventType.EXIT_LEVEL, 123));
             //Telemetry.Instance.TrackEvent(new LandingEvent(TelemetryEvent.EventType.DEFAULT, 2, 3));
 
             Thread.Sleep(5000 * 2);

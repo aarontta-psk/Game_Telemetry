@@ -3,10 +3,10 @@ namespace game_telemetry
 {
     public class StartLevelEvent:TelemetryEvent
     {
-        int currentLevel;
-        public StartLevelEvent(EventType type,int currentLevelAux) : base(type)
+        public int CurrentLevel { get; private set; }
+        public StartLevelEvent(EventType type,int currentLevel) : base(type)
         {
-            currentLevel = currentLevelAux;
+            CurrentLevel = currentLevel;
         }
     }
 }

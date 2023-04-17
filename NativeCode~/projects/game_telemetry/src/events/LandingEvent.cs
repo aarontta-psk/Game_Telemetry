@@ -2,13 +2,13 @@
 {
     public class LandingEvent : TelemetryEvent
     {
-        public int posPlayerX;
-        public int posPlayerY;
+        public int PosPlayerX { get; private set; }
+        public int PosPlayerY { get; private set; }
 
-        public LandingEvent(EventType type, int posPlayerXAux, int posPlayerYAux) : base(type)
+        public LandingEvent(EventType type, int posPlayerX, int posPlayerY) : base(type)
         {
-            posPlayerX = posPlayerXAux;
-            posPlayerY = posPlayerYAux;
+            PosPlayerX = posPlayerX;
+            PosPlayerY = posPlayerY;
         }
     }
 }

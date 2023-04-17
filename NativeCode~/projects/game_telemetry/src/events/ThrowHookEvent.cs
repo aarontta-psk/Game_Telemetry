@@ -2,19 +2,19 @@
 {
     public class ThrowHookEvent : TelemetryEvent
     {
-        public int posPlayerX;
-        public int posPlayerY;
-        public int posMouseX;
-        public int posMouseY;
-        public int numHooks;
+        public int PosPlayerX { get; private set; }
+        public int PosPlayerY { get; private set; }
+        public int PosMouseX { get; private set; }
+        public int PosMouseY { get; private set; }
+        public int NumHooks { get; private set; }
 
-        protected ThrowHookEvent(EventType type, int posPlayerXAux,int posPlayerYAux,int posMouseXAux,int posMouseYAux,int numHooksAux) : base(type)
+        protected ThrowHookEvent(EventType type, int posPlayerX,int posPlayerY,int posMouseX,int posMouseY,int numHooks) : base(type)
         {
-            posPlayerX = posPlayerXAux;
-            posPlayerY = posPlayerYAux;
-            posMouseX = posMouseXAux;
-            posMouseY = posMouseYAux;
-            numHooks = numHooksAux;
+            PosPlayerX = posPlayerX;
+            PosPlayerY = posPlayerY;
+            PosMouseX = posMouseX;
+            PosMouseY = posMouseY;
+            NumHooks = numHooks;
         }
     }
 }

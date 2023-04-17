@@ -3,14 +3,15 @@
     public class LevelResetEvent : TelemetryEvent
     {
         //Posicion ANTES del reinicio
-        public int posPlayerX;
-        public int posPlayerY;
-        public int actualLevel;
-        public LevelResetEvent(EventType type, int posPlayerXAux, int posPlayerYAux, int actualLevelAux) : base(type)
+        public int PosPlayerX { get; private set; }
+        public int PosPlayerY { get; private set; }
+        public int CurrentLevel { get; private set; }
+
+        public LevelResetEvent(EventType type, int posPlayerX, int posPlayerY, int currentLevel) : base(type)
         {
-            posPlayerX = posPlayerXAux;
-            posPlayerY = posPlayerYAux;
-            actualLevel = actualLevelAux;
+            PosPlayerX = posPlayerX;
+            PosPlayerY = posPlayerY;
+            CurrentLevel = currentLevel;
         }
     }
 }

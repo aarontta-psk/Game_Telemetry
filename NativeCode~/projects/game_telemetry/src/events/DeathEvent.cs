@@ -4,17 +4,17 @@
     {
         public enum DeathType { FELL, DAMAGE};
 
-        public int posPlayerX;
-        public int posPlayerY;
-        public DeathType death;
-        public int section_ID;
+        public DeathType Death { get; private set; }
+        public int PosPlayerX { get; private set; }
+        public int PosPlayerY { get; private set; }
+        public int ZoneID { get; private set; }
 
-        public DeathEvent(EventType type, int posPlayerXAux, int posPlayerYAux, DeathType deathAux, int section_IDAux) : base(type)
+        public DeathEvent(EventType type, int posPlayerX, int posPlayerY, DeathType death, int zoneID) : base(type)
         {
-            posPlayerX = posPlayerXAux;
-            posPlayerY = posPlayerYAux;
-            death = deathAux;
-            section_ID = section_IDAux;
+            Death = death;
+            PosPlayerX = posPlayerX;
+            PosPlayerY = posPlayerY;
+            ZoneID = zoneID;
         }
     }
 }

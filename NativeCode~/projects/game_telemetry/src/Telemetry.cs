@@ -81,7 +81,7 @@ namespace game_telemetry
         private void TelemetryStop()
         {
             runningThread = false;
-            eventQueue.Enqueue(new SessionEndEvent(TelemetryEvent.EventType.NOT_DEFAULT));
+            eventQueue.Enqueue(new SessionEndEvent(TelemetryEvent.EventType.SESSION_END));
             telemetryThread.Join();
         }
     }
