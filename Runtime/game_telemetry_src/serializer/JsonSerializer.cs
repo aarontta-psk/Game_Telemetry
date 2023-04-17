@@ -1,5 +1,4 @@
-﻿//using System.Runtime.Serialization.Json;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace game_telemetry
 {
