@@ -4,14 +4,13 @@ namespace game_telemetry
 {
     class FilePersistence : Persistence
     {
-        const string TelemetryDirectory = "./telemetry_data/";
         string fileName;
 
         public FilePersistence(ISerializer serializer_) : base(serializer_)
         {
-            if (!Directory.Exists(TelemetryDirectory))
-                Directory.CreateDirectory(TelemetryDirectory);
-            fileName = TelemetryDirectory + Telemetry.Instance.GameName + "_" + Telemetry.Instance.SessionID.ToString() + serializer.Extension();
+            if (!Directory.Exists(Telemetry.Instance.Directory))
+                Directory.CreateDirectory(Telemetry.Instance.Directory);
+            fileName = Telemetry.Instance.Directory + Telemetry.Instance.GameName + "_" + Telemetry.Instance.SessionID.ToString() + serializer.Extension();
         }
 
         public override void Save(TelemetryEvent t_event)

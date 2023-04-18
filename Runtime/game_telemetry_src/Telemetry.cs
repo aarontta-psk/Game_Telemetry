@@ -21,11 +21,14 @@ namespace game_telemetry
         private string gameName;
         public string GameName { get => gameName; private set { gameName = value; } }
 
+        private string directory;
+        public string Directory { get => directory; private set { directory = value; } }
+
         private Telemetry() { }
 
         public static Telemetry Instance => instance;
 
-        public static bool Init(string gameName_, long sessionId_)
+        public static bool Init(string directory_, string gameName_, long sessionId_)
         {
             if (instance != null)
             {
@@ -34,7 +37,7 @@ namespace game_telemetry
             }
 
             instance = new Telemetry();
-            instance.TelemetrySetup(gameName_, sessionId_);
+            instance.TelemetrySetup(directory_, gameName_, sessionId_);
             return true;
         }
 
@@ -69,8 +72,9 @@ namespace game_telemetry
             }
         }
 
-        private void TelemetrySetup(string gameName_, long sessionId_)
+        private void TelemetrySetup(string directory_, string gameName_, long sessionId_)
         {
+            Directory = directory_;
             GameName = gameName_;
             SessionID = sessionId_;
 
