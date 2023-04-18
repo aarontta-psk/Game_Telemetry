@@ -17,9 +17,9 @@ namespace game_telemetry
             // This relays on the fact that we always get a child class of TelemetryEvent
             StringBuilder stringBuilder = new StringBuilder();
             foreach (PropertyInfo propertyInfo in t_event.GetType().BaseType.GetProperties())
-                stringBuilder.AppendFormat("{0},", propertyInfo.GetValue(t_event, null));
+                stringBuilder.AppendFormat("{0};", propertyInfo.GetValue(t_event, null));
             foreach (PropertyInfo propertyInfo in t_event.GetType().GetProperties().Where(property => property.DeclaringType == t_event.GetType()))
-                stringBuilder.AppendFormat("{0},", propertyInfo.GetValue(t_event, null));
+                stringBuilder.AppendFormat("{0};", propertyInfo.GetValue(t_event, null));
             return stringBuilder.ToString();
         }
 
